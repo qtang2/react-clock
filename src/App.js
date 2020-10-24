@@ -4,6 +4,8 @@ import LengthControl from './components/LengthControl';
 import Session from './components/Session';
 import TimerControl from './components/TimerControl';
 
+
+const audio = document.getElementById("beep")
 class  App extends Component {
   constructor(props){
     super(props)
@@ -11,7 +13,7 @@ class  App extends Component {
     this.state={
       breakLength: 5,
       sessionLength:25,
-      clockCount: 25*60,
+      clockCount: 3,
       currentTimer: "Session",
       intervalIsPlaying: false
     }
@@ -34,6 +36,8 @@ class  App extends Component {
       this.timerInterval = setInterval(() => {
         const {clockCount,breakLength,currentTimer,sessionLength} = this.state
         if(clockCount===0){
+          console.log("beeeeeeeeep")
+          audio.play()
           this.setState({
             currentTimer: currentTimer==="Session"? "Break":"Session",
             clockCount: currentTimer==="Session"? breakLength*60 : sessionLength*60
@@ -128,10 +132,12 @@ class  App extends Component {
     })
 
     clearInterval(this.timerInterval)
+    audio.pause();
+    audio.currentTime=0
   }
 
   audioBeep = ()=>{
-    
+
   }
 
   render(){
@@ -144,14 +150,7 @@ class  App extends Component {
     return (
       <div className="App">
         <h3>Pomodoro Clock</h3>
-        <audio
-          id="beep"
-          preload="auto"
-          ref={(audio) => {
-            this.audioBeep = audio;
-          }}
-          src="http://goo.gl/65cBl1"
-        />
+        
         <div className="length-control-container">
           <LengthControl
             type = "break" 
