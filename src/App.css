@@ -1,15 +1,25 @@
 .App {
   text-align: center;
+  color: white;
+  font-size: 2em;
 }
 
 .length-container {
   display: flex;
   flex-direction: column;
+  margin: 20px;
+  /* border: 1px solid black; */
+  /* padding: 20px; */
+}
+
+.length-container span {
+  margin: 18px;
 }
 
 .length-control-container {
   display: flex;
   justify-content: center;
+  /* border: 1px solid black; */
 }
 .timer-container {
   display: flex;
@@ -22,16 +32,57 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 300px;
-  border: 1px solid pink;
+  width: 270px;
+  height: 180px;
+  border: 5px solid #675241;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .timer-control-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid black; */
 }
 
 #reset {
   margin-left: 15px;
+}
+
+#time-left {
+  font-size: 2.6em;
+}
+
+#copyright {
+  color: black;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .App {
+    font-size: 1.6em;
+  }
+
+  .length-control-container {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+  }
+
+  .length-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+  }
+
+  .session-container {
+    width: 240px;
+    height: 150px;
+  }
+
+  #copyright {
+    font-size: 15px;
+  }
 }

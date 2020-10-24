@@ -175,6 +175,7 @@ class  App extends Component {
           <Session clockCount={this.clockify(clockCount)} currentTimer={currentTimer}/>
           <TimerControl startStop={this.startStop} reset={this.reset} intervalIsPlaying={intervalIsPlaying}/>
         </div>
+        <label id="copyright"> © Qian Tang 2020</label>
       </div>
     );
   }
