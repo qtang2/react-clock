@@ -153,7 +153,7 @@ class  App extends Component {
       intervalIsPlaying} = this.state
     return (
       <div className="App">
-        <h3>Pomodoro Clock</h3>
+        <h3>Welcome to the <span>Pomodoro Clock</span></h3>
         
         <div className="length-control-container">
           <LengthControl
