@@ -13,7 +13,7 @@ class  App extends Component {
     this.state={
       breakLength: 5,
       sessionLength:25,
-      clockCount: 3,
+      clockCount: 25*60,
       currentTimer: "Session",
       intervalIsPlaying: false
     }
@@ -37,11 +37,18 @@ class  App extends Component {
         const {clockCount,breakLength,currentTimer,sessionLength} = this.state
         if(clockCount===0){
           console.log("beeeeeeeeep")
-          audio.play()
-          this.setState({
-            currentTimer: currentTimer==="Session"? "Break":"Session",
-            clockCount: currentTimer==="Session"? breakLength*60 : sessionLength*60
-          })
+          if(currentTimer==="Session"){
+            audio.play()
+            this.setState({
+              currentTimer: "Break",
+              clockCount: breakLength*60,
+            })
+          }else if(currentTimer==="Break"){
+            this.setState({
+              currentTimer: "Session",
+              clockCount: sessionLength*60,
+            })
+          }
         }else{
           this.setState({clockCount:clockCount-1})
         }
@@ -55,7 +62,7 @@ class  App extends Component {
   clockify = (count) =>{
     let munites = Math.floor(count/60)
     let seconds = count%60
-    return munites+":" + (seconds<10 ? '0'+seconds: seconds)
+    return (munites<10?'0'+munites:munites)+":" + (seconds<10 ? '0'+seconds: seconds)
   }
 
 
@@ -136,9 +143,6 @@ class  App extends Component {
     audio.currentTime=0
   }
 
-  audioBeep = ()=>{
-
-  }
 
   render(){
     let {
